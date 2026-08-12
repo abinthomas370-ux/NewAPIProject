@@ -1,0 +1,59 @@
+name: using_one_job
+on: 
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  build_test_package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v7
+      - name: python install
+        uses: actions/setup-python@5 
+      - name: install python dependencies
+        run: pip install -r  requirements.txt
+      - name: list
+        run: ls
+      - name: run ruff  
+      - run: ruff check .
+      
+      - name: run pytest
+        run: pytest
+        
+      - name: package creation
+        run: zip -r release.zip
+
+      - name: upload artifacts
+        uses: actions/uploadartifact@7
+        with:
+          - name: artifact
+          path: ./release.zip
+
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v7
+      - name: python install
+        uses: actions/setup-python@5 
+      - name: run pytest
+        run: pytest
+
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v7
+      - name: python install
+        uses: actions/setup-python@5 
+      - name: package creation
+        run: zip -r release.zip
+      - name: upload artifacts
+        uses: actions/uploadartifact@7
+        with:
+          - name: artifact
+          path: ./release.zip
+        
+      
+     
+     
+      
