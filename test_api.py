@@ -34,7 +34,7 @@ app.dependency_overrides[get_db] = override_get_db
 
 def test_root():
     response = client.get("/")
-    assert response.status_code == 201
+    assert response.status_code == 200
     assert response.json() == "server is running"
 
 
