@@ -18,7 +18,7 @@ jobs:
       - name: list
         run: ls
       - name: run ruff  
-      - run: ruff check .
+        run: ruff check .
       
       - name: run pytest
         run: pytest
@@ -26,34 +26,11 @@ jobs:
       - name: package creation
         run: zip -r release.zip
 
-      - name: upload artifacts
-        uses: actions/uploadartifact@7
-        with:
-          - name: artifact
-          path: ./release.zip
-
-    steps:
-      - name: Check repository
-        uses: actions/checkout@v7
-      - name: python install
-        uses: actions/setup-python@5 
-      - name: run pytest
-        run: pytest
-
-    steps:
-      - name: Check repository
-        uses: actions/checkout@v7
-      - name: python install
-        uses: actions/setup-python@5 
-      - name: package creation
-        run: zip -r release.zip
       - name: upload artifacts
         uses: actions/uploadartifact@7
         with:
           name: artifact
           path: ./release.zip
-        
-      
-     
-     
+
+    
       
