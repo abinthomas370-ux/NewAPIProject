@@ -1,8 +1,8 @@
 name: using_one_job_pytest
 on: 
-  pull_request:
+  push:
     branches:
-      - main
+      - feature/pytest-failure
   workflow_dispatch:
   
 jobs:
