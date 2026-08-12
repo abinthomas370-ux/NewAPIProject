@@ -24,10 +24,10 @@ jobs:
         run: pytest
         
       - name: package creation
-        run: zip -r release.zip
+        run: zip -r release.zip .
 
       - name: upload artifacts
-        uses: actions/uploadartifact@v7
+        uses: actions/upload-artifact@v7
         with:
           name: artifact
           path: ./release.zip
