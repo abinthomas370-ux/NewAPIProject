@@ -50,7 +50,7 @@ jobs:
       - name: upload artifacts
         uses: actions/uploadartifact@7
         with:
-          - name: artifact
+          name: artifact
           path: ./release.zip
         
       
