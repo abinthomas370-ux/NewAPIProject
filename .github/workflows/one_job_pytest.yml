@@ -27,7 +27,7 @@ jobs:
         run: zip -r release.zip
 
       - name: upload artifacts
-        uses: actions/uploadartifact@7
+        uses: actions/uploadartifact@v7
         with:
           name: artifact
           path: ./release.zip
