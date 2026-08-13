@@ -58,5 +58,5 @@ jobs:
              script: | 
                   cd /opt/fastapi
                   unzip -o ./release.zip
-                  systemctl restart fastapi.service
-                  sudo systemctl status fastapi --no-page       
+                  systemctl restart fast-api.service
+                  sudo systemctl status fast-api --no-page       
