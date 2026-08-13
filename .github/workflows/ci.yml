@@ -34,4 +34,30 @@ jobs:
         with:
           name: my-artifact
           path: ./release.zip
-          
+   deploy:
+     needs: package
+     runs-on: ubuntu-latest
+     steps:
+       - uses: actions/downloads-artifact@v7
+         with:
+           name: my-artifact
+       - run: ls
+       - uses: appleboy/scp-action@v1 
+         with: 
+               host: ${{ secrets.HOST_NAME }} 
+               username: ${{ secrets.USERNAME }} 
+               key: ${{ secrets.KEY }} 
+               source: "./release.zip" 
+               target: "/opt/fastapi"  
+
+               
+       - uses: appleboy/ssh-action@v1 
+         with: 
+             host: ${{ secrets.HOST_NAME }} 
+             username: ${{ secrets.USERNAME }} 
+             key: ${{ secrets.KEY }} 
+             script: | 
+                  cd /opt/fastapi
+                  unzip -o ./release.zip
+                  systemctl restart fastapi.service
+                  sudo systemctl status fastapi --no-       
