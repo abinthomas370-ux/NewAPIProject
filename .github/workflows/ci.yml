@@ -37,7 +37,7 @@ jobs:
      needs: package
      runs-on: ubuntu-latest
      steps:
-       - uses: actions/downloads-artifact@v7
+       - uses: actions/download-artifact@v7
          with:
            name: my-artifact
        - run: ls
